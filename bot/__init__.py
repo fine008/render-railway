@@ -91,7 +91,7 @@ if len(DATABASE_URL) == 0:
 
 if DATABASE_URL:
     conn = MongoClient(DATABASE_URL)
-    db = conn.wzmlunion
+    db = conn.mltb
     if config_dict := db.settings.config.find_one({'_id': bot_id}):  #retrun config dict (all env vars)
         del config_dict['_id']
         for key, value in config_dict.items():
@@ -235,7 +235,7 @@ DEF_IMDB_TEMP  = environ.get('IMDB_TEMPLATE', '')
 if len(DEF_IMDB_TEMP) == 0:
     DEF_IMDB_TEMP = '''<b>Title: </b> {title} [{year}]
 <b>Also Known As:</b> {aka}
-<b>Rating ⭐️:</b> <i>{rating}</i>
+<b>Rating ג­ן¸:</b> <i>{rating}</i>
 <b>Release Info: </b> <a href="{url_releaseinfo}">{release_date}</a>
 <b>Genre: </b>{genres}
 <b>IMDb URL:</b> {url}
@@ -312,7 +312,7 @@ if len(SEARCH_API_LINK) == 0:
 
 STATUS_UPDATE_INTERVAL = environ.get('STATUS_UPDATE_INTERVAL', '')
 if len(STATUS_UPDATE_INTERVAL) == 0:
-    STATUS_UPDATE_INTERVAL = 10
+    STATUS_UPDATE_INTERVAL = 2
 else:
     STATUS_UPDATE_INTERVAL = int(STATUS_UPDATE_INTERVAL)
 
@@ -500,13 +500,13 @@ START_BTN1_NAME = environ.get('START_BTN1_NAME', '')
 START_BTN1_URL = environ.get('START_BTN1_URL', '')
 if len(START_BTN1_NAME) == 0 or len(START_BTN1_URL) == 0:
     START_BTN1_NAME = 'Master'
-    START_BTN1_URL = 'https://t.me/krn_adhikari'
+    START_BTN1_URL = 'https://t.me/edith_cloud'
 
 START_BTN2_NAME = environ.get('START_BTN2_NAME', '')
 START_BTN2_URL = environ.get('START_BTN2_URL', '')
 if len(START_BTN2_NAME) == 0 or len(START_BTN2_URL) == 0:
     START_BTN2_NAME = 'Support Group'
-    START_BTN2_URL = 'https://t.me/WeebZone_updates'
+    START_BTN2_URL = 'https://t.me/edithupdate'
 
 BUTTON_FOUR_NAME = environ.get('BUTTON_FOUR_NAME', '')
 BUTTON_FOUR_URL = environ.get('BUTTON_FOUR_URL', '')
@@ -555,7 +555,7 @@ DRIVEFIRE_CRYPT = environ.get('DRIVEFIRE_CRYPT', '')
 if len(DRIVEFIRE_CRYPT) == 0:
     DRIVEFIRE_CRYPT = ''
 
-SHAREDRIVE_PHPCKS = environ.get('SHAREDRIVE_PHPCKS', '')
+SHAREDRIVE_PHPCKS = environ.get('SHAREDRIVE_PHPCKS','')
 if len(SHAREDRIVE_PHPCKS) == 0:
     SHAREDRIVE_PHPCKS = ''
 
@@ -583,11 +583,11 @@ else:
 
 AUTHOR_NAME = environ.get('AUTHOR_NAME', '')
 if len(AUTHOR_NAME) == 0:
-    AUTHOR_NAME = 'WZML'
+    AUTHOR_NAME = 'EDITH'
 
 AUTHOR_URL = environ.get('AUTHOR_URL', '')
 if len(AUTHOR_URL) == 0:
-    AUTHOR_URL = 'https://t.me/WeebZone_updates'
+    AUTHOR_URL = 'https://t.me/edithupdate'
 
 TITLE_NAME = environ.get('TITLE_NAME', '')
 if len(TITLE_NAME) == 0:
@@ -595,11 +595,11 @@ if len(TITLE_NAME) == 0:
 
 GD_INFO = environ.get('GD_INFO', '')
 if len(GD_INFO) == 0:
-    GD_INFO = 'Uploaded by WeebZone Mirror Bot'
+    GD_INFO = 'Uploaded by EDITH'
 
 CREDIT_NAME = environ.get('CREDIT_NAME', '')
 if len(CREDIT_NAME) == 0:
-    CREDIT_NAME = 'WeebZone'
+    CREDIT_NAME = 'EDITH'
 
 NAME_FONT = environ.get('NAME_FONT', '')
 if len(NAME_FONT) == 0:
@@ -613,14 +613,14 @@ FINISHED_PROGRESS_STR = environ.get('FINISHED_PROGRESS_STR', '')
 UN_FINISHED_PROGRESS_STR = environ.get('UN_FINISHED_PROGRESS_STR', '')
 MULTI_WORKING_PROGRESS_STR = environ.get('MULTI_WORKING_PROGRESS_STR', '')
 if len(FINISHED_PROGRESS_STR) == 0 or len(FINISHED_PROGRESS_STR) == 0 or len(MULTI_WORKING_PROGRESS_STR) == 0:
-    FINISHED_PROGRESS_STR = '█' # '■'
-    UN_FINISHED_PROGRESS_STR = '▒' # '□'
-    MULTI_WORKING_PROGRESS_STR = '▁ ▂ ▃ ▄ ▅ ▆ ▇'
+    FINISHED_PROGRESS_STR = 'ג–ˆ' # 'ג– '
+    UN_FINISHED_PROGRESS_STR = 'ג–’' # 'ג–¡'
+    MULTI_WORKING_PROGRESS_STR = 'ג– ג–‚ ג–ƒ ג–„ ג–… ג–† ג–‡'
 MULTI_WORKING_PROGRESS_STR = (MULTI_WORKING_PROGRESS_STR.replace("'", '').replace('"', '').replace('[', '').replace(']', '').replace(",", "")).split(' ')
 
 if len(MULTI_WORKING_PROGRESS_STR) != 7:
     LOGGER.warning("Multi Progress doesn't contain 7 Symbols. Check Agian, Using Default for Now !")
-    MULTI_WORKING_PROGRESS_STR = '▁ ▂ ▃ ▄ ▅ ▆ ▇'.split(' ')
+    MULTI_WORKING_PROGRESS_STR = 'ג– ג–‚ ג–ƒ ג–„ ג–… ג–† ג–‡'.split(' ')
 
 IMAGE_URL = environ.get('IMAGE_URL', '')
 if len(IMAGE_URL) == 0:
@@ -629,6 +629,8 @@ if len(IMAGE_URL) == 0:
 TIMEZONE = environ.get('TIMEZONE', '')
 if len(TIMEZONE) == 0:
     TIMEZONE = 'Asia/Kolkata'
+
+PORT = environ.get('PORT')
 
 PIXABAY_API_KEY = environ.get('PIXABAY_API_KEY', '')
 if len(PIXABAY_API_KEY) == 0:
@@ -657,12 +659,10 @@ if len(WALLCRAFT_CATEGORY) == 0:
 PICS = environ.get('PICS', '')
 PICS = (PICS.replace("'", '').replace('"', '').replace('[', '').replace(']', '').replace(",", "")).split()
 
-PORT = environ.get('PORT', None)
-
 YT_DLP_QUALITY = environ.get('YT_DLP_QUALITY', '')
 if len(YT_DLP_QUALITY) == 0:
     YT_DLP_QUALITY = ''
-
+    
 BASE_URL = environ.get('BASE_URL', '').rstrip("/")
 if len(BASE_URL) == 0:
     log_warning('BASE_URL not provided!')
@@ -670,7 +670,7 @@ if len(BASE_URL) == 0:
 
 UPSTREAM_REPO = environ.get('UPSTREAM_REPO', '')
 if len(UPSTREAM_REPO) == 0:
-   UPSTREAM_REPO = 'https://github.com/anime-republic/render-railway'
+   UPSTREAM_REPO = 'https://github.com/weebzone/WZML'
 
 UPSTREAM_BRANCH = environ.get('UPSTREAM_BRANCH', '')
 if len(UPSTREAM_BRANCH) == 0:
@@ -847,7 +847,7 @@ if ospath.exists('categories.txt'):
                 CATEGORY_INDEX.append('')
 
 if BASE_URL:
-    Popen(f"gunicorn web.wserver:app --bind 0.0.0.0:{PORT} --keep-alive 5", shell=True)
+    Popen(f"gunicorn web.wserver:app --bind 0.0.0.0:{PORT}", shell=True)
 
 srun(["qbittorrent-nox", "-d", "--profile=."])
 if not ospath.exists('.netrc'):
